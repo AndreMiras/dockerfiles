@@ -11,5 +11,5 @@ $ docker build -t mynfctools:latest .
 
 ## Run
 ```
-$ docker run -it mynfctools
+$ docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
 ```
