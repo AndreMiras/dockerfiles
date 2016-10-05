@@ -2,8 +2,9 @@
 
 Automatically builds an environment with the following tools:
 
-* mfoc
 * libnfc-bin
+* mfoc
+* mfcuk
 
 ## Build
 ```

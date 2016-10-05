@@ -18,6 +18,13 @@ RUN apt-get update && apt-get install -y \
     && autoreconf -vis \
     && ./configure \
     && make \
+    && make install \
+    && wget 'https://github.com/nfc-tools/mfcuk/archive/mfcuk-0.3.8.tar.gz' --directory-prefix /tmp/ \
+    && tar -xvzf /tmp/mfcuk-0.3.8.tar.gz --directory /tmp/ \
+    && cd /tmp/mfcuk-mfcuk-0.3.8/ \
+    && autoreconf -vis \
+    && ./configure \
+    && make \
     && make install
 
 ENV LANG C.UTF-8
