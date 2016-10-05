@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     dh-autoreconf \
     libnfc-dev \
+    libnfc-bin \
     pkg-config \
     ca-certificates \
     && update-ca-certificates \
