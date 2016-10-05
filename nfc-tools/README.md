@@ -2,9 +2,9 @@
 
 Automatically builds an environment with the following tools:
 
-* libnfc-bin
-* mfoc
-* mfcuk
+* [libnfc](https://github.com/nfc-tools/libnfc)
+* [mfoc](https://github.com/nfc-tools/mfoc)
+* [mfcuk](https://github.com/nfc-tools/mfcuk)
 
 ## Build
 ```
