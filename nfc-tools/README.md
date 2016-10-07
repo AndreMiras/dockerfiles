@@ -8,7 +8,14 @@ Automatically builds an environment with the following tools:
 * [RFIDIOt](https://github.com/AdamLaurie/RFIDIOt)
 
 ## Build
+Automatically clone and build:
 ```
+docker build -t mynfctools:latest https://github.com/AndreMiras/dockerfiles.git#master:nfc-tools
+```
+Or clone it yourself, then build it:
+```
+https://github.com/AndreMiras/dockerfiles.git
+cd dockerfiles/nfc-tools/
 docker build -t mynfctools:latest .
 ```
 
@@ -16,6 +23,7 @@ docker build -t mynfctools:latest .
 ```
 docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
 ```
+
 ## Usage example
 Run your favorite nfc tool.
 ```
