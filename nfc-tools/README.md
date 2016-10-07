@@ -5,6 +5,7 @@ Automatically builds an environment with the following tools:
 * [libnfc](https://github.com/nfc-tools/libnfc)
 * [mfoc](https://github.com/nfc-tools/mfoc)
 * [mfcuk](https://github.com/nfc-tools/mfcuk)
+* [RFIDIOt](https://github.com/AdamLaurie/RFIDIOt)
 
 ## Build
 ```

@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     libnfc-bin \
     pkg-config \
     ca-certificates \
+    python \
+    python-pip \
+    python-setuptools \
+    python-dev \
     && update-ca-certificates \
     && wget 'https://github.com/nfc-tools/mfoc/archive/mfoc-0.10.7.tar.gz' --directory-prefix /tmp/ \
     && tar -xvzf /tmp/mfoc-0.10.7.tar.gz --directory /tmp/ \
@@ -25,7 +29,10 @@ RUN apt-get update && apt-get install -y \
     && autoreconf -vis \
     && ./configure \
     && make \
-    && make install
+    && make install \
+    && pip install \
+    https://github.com/AdamLaurie/RFIDIOt/archive/master.zip \
+    pycrypto==2.6.1
 
 ENV LANG C.UTF-8
 
