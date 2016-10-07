@@ -14,7 +14,7 @@ docker build -t mynfctools:latest https://github.com/AndreMiras/dockerfiles.git#
 ```
 Or clone it yourself, then build it:
 ```
-https://github.com/AndreMiras/dockerfiles.git
+git clone https://github.com/AndreMiras/dockerfiles.git
 cd dockerfiles/nfc-tools/
 docker build -t mynfctools:latest .
 ```
