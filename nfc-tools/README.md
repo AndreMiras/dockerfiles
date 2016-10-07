@@ -23,5 +23,5 @@ $ mfoc -O /tmp/mycard.mfd
 ```
 Then copy the `mycard.mfd` output file to your host current directory using `docker cp`.
 ```
-docker cp <CONTAINER>:/tmp/mycard.mfd ./
+$ docker cp <CONTAINER>:/tmp/mycard.mfd ./
 ```

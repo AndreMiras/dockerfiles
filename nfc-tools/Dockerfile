@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y \
     && pip install \
     https://github.com/AdamLaurie/RFIDIOt/archive/master.zip \
     pycrypto==2.6.1 \
-    pyscard==1.9.4 \
+    pyscard==1.9.4
 
 ENV LANG C.UTF-8
 
