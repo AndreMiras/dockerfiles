@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     pcscd \
     libpcsclite-dev \
     swig \
-    && pcscd \
+    supervisor \
     && update-ca-certificates \
     && wget 'https://github.com/nfc-tools/mfoc/archive/mfoc-0.10.7.tar.gz' --directory-prefix /tmp/ \
     && tar -xvzf /tmp/mfoc-0.10.7.tar.gz --directory /tmp/ \
@@ -40,6 +40,12 @@ RUN apt-get update && apt-get install -y \
     pycrypto==2.6.1 \
     pyscard==1.9.4
 
+# "/etc/supervisor/conf.d/*.conf" gets loaded by "/etc/supervisor/supervisord.conf"
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY start.sh /start.sh
+
 ENV LANG C.UTF-8
 
 WORKDIR /root
+
+ENTRYPOINT ["/start.sh"]
