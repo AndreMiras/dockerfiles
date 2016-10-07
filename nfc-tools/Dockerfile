@@ -28,3 +28,5 @@ RUN apt-get update && apt-get install -y \
     && make install
 
 ENV LANG C.UTF-8
+
+WORKDIR /root
