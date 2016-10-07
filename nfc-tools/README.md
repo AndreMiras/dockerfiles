@@ -9,19 +9,19 @@ Automatically builds an environment with the following tools:
 
 ## Build
 ```
-$ docker build -t mynfctools:latest .
+docker build -t mynfctools:latest .
 ```
 
 ## Run
 ```
-$ docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
+docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
 ```
 ## Usage example
 Run your favorite nfc tool.
 ```
-$ mfoc -O /tmp/mycard.mfd
+mfoc -O /tmp/mycard.mfd
 ```
 Then copy the `mycard.mfd` output file to your host current directory using `docker cp`.
 ```
-$ docker cp <CONTAINER>:/tmp/mycard.mfd ./
+docker cp <CONTAINER>:/tmp/mycard.mfd ./
 ```
