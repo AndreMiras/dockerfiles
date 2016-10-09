@@ -19,7 +19,7 @@ First run the `xhost` command to give local `root` user acess to the X server.
 ```
 xhost SI:localuser:root
 ```
-Then the new container.
+Then run the new container.
 ```
 docker run -it --rm --privileged \
 -v /dev/bus/usb:/dev/bus/usb \
@@ -29,7 +29,7 @@ cardpeek
 ```
 
 ## Use
-Run cardpeek from command line.
+Run Cardpeek from the container.
 ```
 cardpeek
 ```
