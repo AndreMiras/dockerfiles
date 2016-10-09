@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     liblua5.2-dev \
     libcurl4-openssl-dev \
     libssl-dev \
+    libgl1-mesa-dev \
     supervisor \
     && update-ca-certificates \
     && wget 'https://github.com/L1L1/cardpeek/archive/cardpeek-0.8.4.tar.gz' --directory-prefix /tmp/ \
