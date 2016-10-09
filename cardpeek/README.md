@@ -15,8 +15,17 @@ docker build -t cardpeek:latest .
 ```
 
 ## Run
+First run the `xhost` command to give local `root` user acess to the X server.
 ```
-docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb cardpeek
+xhost SI:localuser:root
+```
+Then the new container.
+```
+docker run -it --rm --privileged \
+-v /dev/bus/usb:/dev/bus/usb \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-e DISPLAY=unix$DISPLAY \
+cardpeek
 ```
 
 ## Use
