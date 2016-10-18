@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     liblua5.2-dev \
     libcurl4-openssl-dev \
     libssl-dev \
+    libgl1-mesa-glx \
     libgl1-mesa-dev \
     supervisor \
     && update-ca-certificates \
