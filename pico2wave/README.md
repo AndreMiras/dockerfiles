@@ -15,10 +15,6 @@ docker build -t pico2wave:latest .
 ```
 
 ## Run
-First run the `xhost` command to give local `root` user acess to the X server.
-```
-xhost SI:localuser:root
-```
 Then run the new container.
 ```
 docker run -it --rm --privileged pico2wave
