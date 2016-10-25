@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get update && apt-get install -y \
     libttspico-utils
 
+COPY start.sh /start.sh
+
 ENV LANG C.UTF-8
 
 WORKDIR /root
+
+ENTRYPOINT ["/start.sh"]

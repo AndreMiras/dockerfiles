@@ -15,13 +15,17 @@ docker build -t pico2wave:latest .
 ```
 
 ## Run
-Then run the new container.
+Run the new container in interactive mode.
 ```
 docker run -it --rm --privileged pico2wave
 ```
-
-## Use
-Run pico2wave from the container.
+Then run pico2wave from the container.
 ```
 pico2wave -l fr-FR -w test.wav "Bonjour madame" && aplay test.wav 
+```
+
+Or directly execute the command and exit.
+```
+docker run --privileged pico2wave \
+'pico2wave -l fr-FR -w test.wav "Bonjour madame" && aplay test.wav'
 ```
