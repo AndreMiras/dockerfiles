@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     && update-ca-certificates \
     && add-apt-repository multiverse \
     && apt-get update && apt-get install -y \
+    --no-install-recommends \
     libttspico-utils
 
 COPY start.sh /start.sh
