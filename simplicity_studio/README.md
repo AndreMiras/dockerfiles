@@ -1,4 +1,4 @@
-# Simplicity Studio Docker image
+# Simplicity Studio v4 Docker image
 
 Automatically builds an environment for running [SimplicityStudio](https://www.silabs.com).
 
@@ -23,7 +23,7 @@ Then run the new container.
 ```
 docker run -it --rm --privileged \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
--v /dev/bus/usb:/dev/bus/usb \
+-v studio_volume:/opt/SimplicityStudio_v4/ \
 -e DISPLAY=unix$DISPLAY \
 simplicity_studio
 ```
@@ -31,5 +31,5 @@ simplicity_studio
 ## Use
 Run DesktopEditors from the container.
 ```
-studio
+/opt/SimplicityStudio_v4/studio
 ```
