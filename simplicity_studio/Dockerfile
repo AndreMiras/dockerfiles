@@ -20,5 +20,6 @@ RUN apt update && apt install -y \
     && /opt/SimplicityStudio_v4/setup.sh
 
 ENV LANG C.UTF-8
+ENV PATH "$PATH:/opt/SimplicityStudio_v4/"
 
 WORKDIR /root
