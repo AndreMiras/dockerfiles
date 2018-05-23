@@ -5,12 +5,12 @@ Docker image for building Android APKs via [Buildozer](https://github.com/kivy/b
 ## Build
 Automatically clone and build:
 ```sh
-docker build -t buildozer:latest https://github.com/AndreMiras/dockerfiles.git#master:buildozer
+docker build -t buildozer:latest https://github.com/AndreMiras/dockerfiles.git#master:buildozer_android
 ```
 Or clone it yourself, then build it:
 ```sh
 git clone https://github.com/AndreMiras/dockerfiles.git
-cd dockerfiles/buildozer/
+cd dockerfiles/buildozer_android/
 docker build -t buildozer:latest .
 ```
 
