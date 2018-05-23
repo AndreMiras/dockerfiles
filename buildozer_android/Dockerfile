@@ -1,8 +1,8 @@
-# Docker image for running building the APK via buildozer
+# Docker image for building Android APKs via buildozer
 # Build with:
 # docker build --tag=buildozer .
 # Run with:
-# docker run buildozer /bin/sh -c 'USE_SDK_WRAPPER=True buildozer android debug'
+# docker run buildozer /bin/sh -c 'buildozer android debug'
 # Or for interactive shell:
 # docker run -it --rm buildozer
 FROM ubuntu:18.04
@@ -11,6 +11,9 @@ ENV USER="user"
 ENV HOME_DIR="/home/${USER}"
 ENV WORK_DIR="${HOME_DIR}" \
     PATH="${HOME_DIR}/.local/bin:${PATH}"
+# currently needed because buildozer still uses `tools/android` binary
+# even though we have the new `tools/bin/sdkmanager` available
+ENV USE_SDK_WRAPPER=true
 
 # get the latest version from https://www.crystax.net/en/download
 ENV CRYSTAX_NDK_VERSION="10.3.2"
