@@ -4,7 +4,7 @@
 # latest version from https://developer.android.com/studio/index.html
 ANDROID_SDK_TOOLS_VERSION=3859397
 ANDROID_HOME=$(HOME)/.android
-ANDROID_SDK_HOME=$(ANDROID_HOME)/android-sdk
+ANDROID_SDK_HOME=$(ANDROID_HOME)
 ANDROID_SDK_TOOLS_ARCHIVE=sdk-tools-linux-$(ANDROID_SDK_TOOLS_VERSION).zip
 ANDROID_SDK_TOOLS_DL_URL=https://dl.google.com/android/repository/$(ANDROID_SDK_TOOLS_ARCHIVE)
 
@@ -21,8 +21,8 @@ extract_android_sdk:
 
 # updates Android SDK, install Android API, Build Tools...
 update_android_sdk:
-	mkdir --parents $(HOME)/.android
-	echo '### User Sources for Android SDK Manager' > $(HOME)/.android/repositories.cfg
+	mkdir --parents $(ANDROID_SDK_HOME)
+	echo '### User Sources for Android SDK Manager' > $(ANDROID_SDK_HOME)/repositories.cfg
 	yes | $(ANDROID_SDK_HOME)/tools/bin/sdkmanager --licenses
 	$(ANDROID_SDK_HOME)/tools/bin/sdkmanager "platform-tools"
 	$(ANDROID_SDK_HOME)/tools/bin/sdkmanager "platforms;android-19"

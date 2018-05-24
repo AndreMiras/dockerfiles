@@ -57,5 +57,5 @@ RUN make -f buildozer.mk
 
 # links SDK and NDK to where buildozer is expecting to see them
 RUN mkdir -p ${HOME}/.buildozer/android/platform
-RUN ln -sfn ${HOME}/.android/android-sdk ${HOME}/.buildozer/android/platform/android-sdk-20
+RUN ln -sfn ${HOME}/.android ${HOME}/.buildozer/android/platform/android-sdk-20
 RUN ln -sfn ${HOME}/.android/crystax-ndk ${HOME}/.buildozer/
