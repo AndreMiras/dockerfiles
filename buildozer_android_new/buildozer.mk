@@ -13,4 +13,4 @@ install_buildozer_system_dependencies:
 	python2.7-dev openjdk-8-jdk unzip zlib1g-dev zlib1g:i386
 
 install_buildozer:
-	pip install Cython==0.25.2 buildozer
+	pip install Cython==0.28.6 buildozer sh
