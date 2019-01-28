@@ -1,7 +1,11 @@
-FROM ubuntu:16.04
+# Build with:
+# docker build -t mynfctools:latest .
+# Run with:
+# docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
+FROM ubuntu:18.04
 MAINTAINER Andre Miras
 
-RUN apt-get update && apt-get install -y \
+RUN apt update && apt install -y \
     --no-install-recommends \
     wget \
     build-essential \
@@ -36,7 +40,7 @@ RUN apt-get update && apt-get install -y \
     && make \
     && make install \
     && pip install \
-    https://github.com/AdamLaurie/RFIDIOt/archive/master.zip \
+    https://github.com/AdamLaurie/RFIDIOt/archive/27b212d.zip \
     pycrypto==2.6.1 \
     pyscard==1.9.4
 
