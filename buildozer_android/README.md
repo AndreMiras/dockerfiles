@@ -1,6 +1,7 @@
 # Buildozer Docker image
 
 Docker image for building Android APKs via [Buildozer](https://github.com/kivy/buildozer).
+This is using `make` so it can be reused outside docker.
 
 ## Build
 Automatically clone and build:
