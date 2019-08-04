@@ -46,9 +46,6 @@ USER ${USER}
 WORKDIR ${WORK_DIR}
 COPY . ${WORK_DIR}
 
-# downloads and installs CrystaX NDK
-RUN make -f crystax_ndk.mk
-
 # downloads and installs Android SDK
 RUN make -f android_sdk.mk
 
@@ -58,4 +55,3 @@ RUN make -f buildozer.mk
 # links SDK and NDK to where buildozer is expecting to see them
 RUN mkdir -p ${HOME}/.buildozer/android/platform
 RUN ln -sfn ${HOME}/.android ${HOME}/.buildozer/android/platform/android-sdk-20
-RUN ln -sfn ${HOME}/.android/crystax-ndk ${HOME}/.buildozer/
