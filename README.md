@@ -8,14 +8,14 @@ Here is an example with the nfc-tools Dockerfile.
 ### Build
 Build with cloning:
 ```
-docker build -t mynfctools:latest https://github.com/AndreMiras/dockerfiles.git#master:nfc-tools
+docker build -t nfc-tools https://github.com/AndreMiras/dockerfiles.git#develop:nfc-tools
 ```
 Build without cloning (won't work with `COPY` commands).
 ```
-docker build -t mynfctools:latest https://rawgit.com/AndreMiras/dockerfiles/master/nfc-tools/Dockerfile
+docker build -t nfc-tools https://rawgit.com/AndreMiras/dockerfiles/develop/nfc-tools/Dockerfile
 ```
 
 ### Run
 ```
-docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
+docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb nfc-tools
 ```

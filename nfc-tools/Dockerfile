@@ -1,29 +1,30 @@
 # Build with:
-# docker build -t mynfctools:latest .
+# docker build -t nfc-tools .
 # Run with:
-# docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb mynfctools
+# docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb nfc-tools
 FROM ubuntu:18.04
 MAINTAINER Andre Miras
 
 RUN apt update && apt install -y \
     --no-install-recommends \
-    wget \
     build-essential \
-    gcc \
-    dh-autoreconf \
-    libnfc-dev \
-    libnfc-bin \
-    pkg-config \
     ca-certificates \
+    dh-autoreconf \
+    gcc \
+    libnfc-bin \
+    libnfc-dev \
+    libpcsclite-dev \
+    pcsc-tools \
+    pcscd \
+    pkg-config \
     python \
     python-pip \
     python-setuptools \
     python-dev \
-    pcsc-tools \
-    pcscd \
-    libpcsclite-dev \
-    swig \
     supervisor \
+    swig \
+    wget \
+    && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates \
     && wget 'https://github.com/nfc-tools/mfoc/archive/mfoc-0.10.7.tar.gz' --directory-prefix /tmp/ \
     && tar -xvzf /tmp/mfoc-0.10.7.tar.gz --directory /tmp/ \
@@ -32,6 +33,8 @@ RUN apt update && apt install -y \
     && ./configure \
     && make \
     && make install \
+    && cd \
+    && rm -rf /tmp/mfoc-mfoc-0.10.7/ \
     && wget 'https://github.com/nfc-tools/mfcuk/archive/mfcuk-0.3.8.tar.gz' --directory-prefix /tmp/ \
     && tar -xvzf /tmp/mfcuk-0.3.8.tar.gz --directory /tmp/ \
     && cd /tmp/mfcuk-mfcuk-0.3.8/ \
@@ -39,6 +42,8 @@ RUN apt update && apt install -y \
     && ./configure \
     && make \
     && make install \
+    && cd \
+    && rm -rf /tmp/mfcuk-mfcuk-0.3.8/ \
     && pip install \
     https://github.com/AdamLaurie/RFIDIOt/archive/27b212d.zip \
     pycrypto==2.6.1 \

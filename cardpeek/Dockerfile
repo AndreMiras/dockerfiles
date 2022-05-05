@@ -1,24 +1,25 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Andre Miras
 
-RUN apt-get update && apt-get install -y \
+RUN apt update && apt install -y \
     --no-install-recommends \
-    wget \
-    build-essential \
     autoconf \
-    pkg-config \
-    ca-certificates \
     automake \
-    pcscd \
-    libpcsclite-dev \
+    build-essential \
+    ca-certificates \
+    libcurl4-openssl-dev \
+    libgl1-mesa-dev \
+    libgl1-mesa-glx \
     libglib2.0-dev \
     libgtk-3-dev \
     liblua5.2-dev \
-    libcurl4-openssl-dev \
+    libpcsclite-dev \
     libssl-dev \
-    libgl1-mesa-glx \
-    libgl1-mesa-dev \
+    pcscd \
+    pkg-config \
     supervisor \
+    wget \
+    && rm -rf /var/lib/apt/lists/* \
     && update-ca-certificates \
     && wget 'https://github.com/L1L1/cardpeek/archive/cardpeek-0.8.4.tar.gz' --directory-prefix /tmp/ \
     && tar -xvzf /tmp/cardpeek-0.8.4.tar.gz --directory /tmp/ \
@@ -26,7 +27,8 @@ RUN apt-get update && apt-get install -y \
     && autoreconf -vis \
     && ./configure \
     && make \
-    && make install
+    && make install \
+    && rm -rf /tmp/cardpeek-cardpeek-0.8.4/
 
 # "/etc/supervisor/conf.d/*.conf" gets loaded by "/etc/supervisor/supervisord.conf"
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
