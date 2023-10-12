@@ -42,3 +42,29 @@ services:
       $CHECKPOINT_SYNC_URL
       --execution-endpoint
       http://reth:8551
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    profiles:
+      - optional
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_data:/prometheus
+      - ./config/etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana:10.1.2
+    profiles:
+      - optional
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./config/etc/grafana/provisioning/dashboards/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+      - ./config/etc/grafana/provisioning/datasources/prometheus.yml:/etc/grafana/provisioning/datasources/prometheus.yml
+      - ./config/etc/grafana/provisioning/dashboards/reth.json:/etc/grafana/provisioning/dashboards/reth.json
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD:
+
+volumes:
+  prometheus_data:
+  grafana_data:
