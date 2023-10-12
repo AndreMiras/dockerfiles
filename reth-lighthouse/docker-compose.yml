@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  reth:
+    image: ghcr.io/paradigmxyz/reth:v0.1.0-alpha.10
+    restart: unless-stopped
+    ports:
+      - "8545:8545" # rpc
+      - "8551:8551" # engine
+      - "9001:9001" # metrics
+      - "30303:30303" # p2p
+    volumes:
+      - ./data/reth:/root/.local/share/reth
+    command: >
+      node
+      --http
+      --http.addr 0.0.0.0
+      --authrpc.addr 0.0.0.0
+      --metrics 0.0.0.0:9001
+  lighthouse:
+    image: sigp/lighthouse:v4.5.0
+    restart: unless-stopped
+    ports:
+      - "5054" # metrics
+      - "9000:9000" # p2p
+    volumes:
+      - ./data/lighthouse:/root/.lighthouse
+    environment:
+      JWT_SECRET_KEY:
+      CHECKPOINT_SYNC_URL:
+    command: >
+      lighthouse
+      beacon
+      --network
+      mainnet
+      --http
+      --http-address
+      0.0.0.0
+      --execution-jwt-secret-key
+      $JWT_SECRET_KEY
+      --checkpoint-sync-url
+      $CHECKPOINT_SYNC_URL
+      --execution-endpoint
+      http://reth:8551
