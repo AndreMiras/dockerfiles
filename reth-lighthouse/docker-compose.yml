@@ -21,7 +21,7 @@ services:
     image: sigp/lighthouse:v4.5.0
     restart: unless-stopped
     ports:
-      - "5054" # metrics
+      - "5054:5054" # metrics
       - "9000:9000" # p2p
     volumes:
       - ./data/lighthouse:/root/.lighthouse
@@ -29,19 +29,15 @@ services:
       JWT_SECRET_KEY:
       CHECKPOINT_SYNC_URL:
     command: >
-      lighthouse
-      beacon
-      --network
-      mainnet
+      lighthouse beacon
+      --network mainnet
       --http
-      --http-address
-      0.0.0.0
-      --execution-jwt-secret-key
-      $JWT_SECRET_KEY
-      --checkpoint-sync-url
-      $CHECKPOINT_SYNC_URL
-      --execution-endpoint
-      http://reth:8551
+      --http-address 0.0.0.0
+      --metrics
+      --metrics-address 0.0.0.0
+      --execution-jwt-secret-key $JWT_SECRET_KEY
+      --checkpoint-sync-url $CHECKPOINT_SYNC_URL
+      --execution-endpoint http://reth:8551
   prometheus:
     image: prom/prometheus:v2.47.0
     profiles:
@@ -59,9 +55,7 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./config/etc/grafana/provisioning/dashboards/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
-      - ./config/etc/grafana/provisioning/datasources/prometheus.yml:/etc/grafana/provisioning/datasources/prometheus.yml
-      - ./config/etc/grafana/provisioning/dashboards/reth.json:/etc/grafana/provisioning/dashboards/reth.json
+      - ./config/etc/grafana/provisioning:/etc/grafana/provisioning
     environment:
       GF_SECURITY_ADMIN_PASSWORD:
 
