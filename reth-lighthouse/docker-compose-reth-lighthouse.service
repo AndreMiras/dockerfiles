@@ -1,0 +1,15 @@
+[Unit]
+Description=Docker Compose reth-lighthouse Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+WorkingDirectory=/root/reth-lighthouse
+ExecStart=/usr/bin/docker compose --profile optional up --build
+ExecStop=/usr/bin/docker compose down
+TimeoutStartSec=0
+Restart=always
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
