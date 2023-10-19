@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  kong:
+    image: kong:3.4
+    command: ["kong", "docker-start"]
+    entrypoint: ["/custom-docker-entrypoint.sh"]
+    volumes:
+      - ./config/custom-docker-entrypoint.sh:/custom-docker-entrypoint.sh
+      - ./config/etc/kong/kong.yml.tpl:/etc/kong/kong.yml.tpl
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_JWT_SECRET:
+      KONG_JWT_PASSWORD:
+      KONG_SERVICE_URL:
+    ports:
+      - "8000:8000"
