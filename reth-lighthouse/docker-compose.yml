@@ -37,7 +37,7 @@ services:
       --checkpoint-sync-url $CHECKPOINT_SYNC_URL
       --execution-endpoint http://reth:8551
   prometheus:
-    image: prom/prometheus:v2.51.2
+    image: prom/prometheus:v2.55.1
     profiles:
       - optional
     ports:
@@ -46,7 +46,7 @@ services:
       - prometheus_data:/prometheus
       - ./config/etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   grafana:
-    image: grafana/grafana:10.4.2
+    image: grafana/grafana:11.4.0
     profiles:
       - optional
     ports:
