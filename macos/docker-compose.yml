@@ -1,0 +1,23 @@
+services:
+  macos:
+    image: ghcr.io/dockur/macos:2.10
+    container_name: macos
+    environment:
+      VERSION: "13"
+      PLATFORM: "x64"
+      CPU_CORES: "4"
+      RAM_SIZE: "8G"
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 122:22
+      - 8006:8006
+      - 5900:5900/tcp
+      - 5900:5900/udp
+    volumes:
+      - ./macos:/storage
+    restart: on-failure
+    stop_grace_period: 2m
