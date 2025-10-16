@@ -24,6 +24,7 @@ docker run -it --rm \
   --volume "$(pwd):/workspace" \
   --volume ~/.claude:/home/node/.claude \
   --volume ~/.claude.json:/home/node/.claude.json \
+  --volume ~/.gitconfig:/home/node/.gitconfig:ro \
   --workdir /workspace \
   --cap-add=NET_ADMIN \
   --cap-add=NET_RAW \
