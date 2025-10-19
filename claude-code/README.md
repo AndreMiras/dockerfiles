@@ -31,3 +31,36 @@ docker run -it --rm \
   --user node \
   claude-code-dev:latest claude
 ```
+
+## Leverage Dev Container CLI
+
+```sh
+npx @devcontainers/cli up --workspace-folder . --remove-existing-container
+npx @devcontainers/cli exec --workspace-folder . claude
+```
+
+Then the `.devcontainer/devcontainer.json` could be:
+```json
+{
+  "name": "Claude Code with Host Tools",
+  "image": "claude-code-dev:latest",
+  "remoteEnv": {
+    "NPM_CONFIG_PREFIX": "",
+    "NVM_DIR": "/home/node/.nvm"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.claude,target=/home/node/.claude,type=bind",
+    "source=${localEnv:HOME}/.claude.json,target=/home/node/.claude.json,type=bind",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly"
+  ],
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "capAdd": [
+    "NET_ADMIN",
+    "NET_RAW"
+  ],
+  "remoteUser": "node",
+  "postCreateCommand": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash",
+  "postStartCommand": "unset NPM_CONFIG_PREFIX && . ~/.nvm/nvm.sh && nvm install 22 && nvm alias default 22 && echo '. ~/.nvm/nvm.sh' >> ~/.bashrc"
+}
+```
