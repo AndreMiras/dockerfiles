@@ -22,6 +22,7 @@ Then run Codex CLI with:
 docker run -it --rm \
   --volume "$(pwd):/workspace" \
   --volume ~/.codex:/home/node/.codex \
+  --volume ~/.agents:/home/node/.agents:ro \
   --volume ~/.gitconfig:/home/node/.gitconfig:ro \
   --workdir /workspace \
   --env OPENAI_API_KEY \
