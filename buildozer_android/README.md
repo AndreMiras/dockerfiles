@@ -6,7 +6,7 @@ This is using `make` so it can be reused outside docker.
 ## Build
 Automatically clone and build:
 ```sh
-docker build -t buildozer:latest https://github.com/AndreMiras/dockerfiles.git#master:buildozer_android
+docker build -t buildozer:latest https://github.com/AndreMiras/dockerfiles.git#main:buildozer_android
 ```
 Or clone it yourself, then build it:
 ```sh

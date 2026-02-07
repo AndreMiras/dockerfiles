@@ -5,7 +5,7 @@ Automatically builds an environment for running [SVOX Pico](https://launchpad.ne
 ## Build
 Automatically clone and build:
 ```
-docker build -t pico2wave:latest https://github.com/AndreMiras/dockerfiles.git#master:pico2wave
+docker build -t pico2wave:latest https://github.com/AndreMiras/dockerfiles.git#main:pico2wave
 ```
 Or clone it yourself, then build it:
 ```

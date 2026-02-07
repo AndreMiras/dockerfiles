@@ -27,7 +27,7 @@ cardpeek
 ## Build
 Automatically clone and build:
 ```
-docker build -t cardpeek https://github.com/AndreMiras/dockerfiles.git#develop:cardpeek
+docker build -t cardpeek https://github.com/AndreMiras/dockerfiles.git#main:cardpeek
 ```
 Or clone it yourself, then build it:
 ```

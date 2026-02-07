@@ -24,7 +24,7 @@ docker run -it --rm \
 Automatically clone and build:
 
 ```sh
-docker build --tag andremiras/primate https://github.com/AndreMiras/dockerfiles.git#develop:primate
+docker build --tag andremiras/primate https://github.com/AndreMiras/dockerfiles.git#main:primate
 ```
 
 Or clone it yourself, then build it:

@@ -5,7 +5,7 @@ Automatically builds an environment for running [SimplicityStudio](https://www.s
 ## Build
 Automatically clone and build:
 ```
-docker build -t simplicity_studio:latest https://github.com/AndreMiras/dockerfiles.git#master:simplicity_studio
+docker build -t simplicity_studio:latest https://github.com/AndreMiras/dockerfiles.git#main:simplicity_studio
 ```
 Or clone it yourself, then build it:
 ```

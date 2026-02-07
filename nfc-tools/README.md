@@ -27,7 +27,7 @@ docker cp <CONTAINER>:/tmp/mycard.mfd ./
 ## Build
 Automatically clone and build:
 ```
-docker build -t nfc-tools https://github.com/AndreMiras/dockerfiles.git#develop:nfc-tools
+docker build -t nfc-tools https://github.com/AndreMiras/dockerfiles.git#main:nfc-tools
 ```
 Or clone it yourself, then build it:
 ```

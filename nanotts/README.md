@@ -5,7 +5,7 @@ Automatically builds an environment for running [NanoTTS](https://github.com/gmn
 ## Build
 Automatically clone and build:
 ```
-docker build -t nanotts:latest https://github.com/AndreMiras/dockerfiles.git#master:nanotts
+docker build -t nanotts:latest https://github.com/AndreMiras/dockerfiles.git#main:nanotts
 ```
 Or clone it yourself, then build it:
 ```
