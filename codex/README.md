@@ -31,3 +31,8 @@ docker run -it --rm \
   --user node \
   codex:latest
 ```
+
+## Included Tools
+
+- `git`
+- `rg` (`ripgrep`)
