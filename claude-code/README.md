@@ -25,6 +25,7 @@ docker run -it --rm \
   --volume ~/.claude:/home/node/.claude \
   --volume ~/.claude.json:/home/node/.claude.json \
   --volume ~/.gitconfig:/home/node/.gitconfig:ro \
+  --volume ~/.config/gh:/home/node/.config/gh:ro \
   --workdir /workspace \
   --cap-add=NET_ADMIN \
   --cap-add=NET_RAW \
@@ -52,7 +53,7 @@ Then the `.devcontainer/devcontainer.json` could be:
     "source=${localEnv:HOME}/.claude,target=/home/node/.claude,type=bind",
     "source=${localEnv:HOME}/.claude.json,target=/home/node/.claude.json,type=bind",
     "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly",
-    "source=${localEnv:HOME}/.config/gh,target=/home/node/.config/gh,type=bind"
+    "source=${localEnv:HOME}/.config/gh,target=/home/node/.config/gh,type=bind,readonly"
   ],
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",

@@ -44,12 +44,42 @@ docker run -it --rm \
   --volume ~/.codex:/home/node/.codex \
   --volume ~/.agents:/home/node/.agents:ro \
   --volume ~/.gitconfig:/home/node/.gitconfig:ro \
+  --volume ~/.config/gh:/home/node/.config/gh:ro \
   --workdir /workspace \
   --env OPENAI_API_KEY \
   --env XDG_CONFIG_HOME=/home/node/.config \
   --env XDG_CACHE_HOME=/home/node/.cache \
   --user node \
   codex:latest  # or codex:base
+```
+
+## Leverage Dev Container CLI
+
+```sh
+npx @devcontainers/cli up --workspace-folder . --remove-existing-container
+npx @devcontainers/cli exec --workspace-folder . codex
+```
+
+Then the `.devcontainer/devcontainer.json` could be:
+```json
+{
+  "name": "Codex CLI with Host Tools",
+  "image": "codex:latest",
+  "remoteEnv": {
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+    "XDG_CONFIG_HOME": "/home/node/.config",
+    "XDG_CACHE_HOME": "/home/node/.cache"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.codex,target=/home/node/.codex,type=bind",
+    "source=${localEnv:HOME}/.agents,target=/home/node/.agents,type=bind,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly",
+    "source=${localEnv:HOME}/.config/gh,target=/home/node/.config/gh,type=bind,readonly"
+  ],
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "node"
+}
 ```
 
 ## Image Variants
