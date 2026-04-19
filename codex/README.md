@@ -18,18 +18,20 @@ docker build \
 
 Build full image with a pinned Codex CLI version:
 ```sh
+VERSION=0.121.0
 docker build \
-  --build-arg CODEX_VERSION=0.98.0 \
-  --tag codex:0.98.0 \
+  --build-arg CODEX_VERSION=$VERSION \
+  --tag codex:$VERSION \
   https://github.com/AndreMiras/dockerfiles.git#main:codex
 ```
 
 Build base image with a pinned Codex CLI version:
 ```sh
+VERSION=0.121.0
 docker build \
   --target base \
-  --build-arg CODEX_VERSION=0.98.0 \
-  --tag codex:0.98.0-base \
+  --build-arg CODEX_VERSION=$VERSION \
+  --tag codex:$VERSION-base \
   https://github.com/AndreMiras/dockerfiles.git#main:codex
 ```
 
