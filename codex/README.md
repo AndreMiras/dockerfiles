@@ -18,7 +18,7 @@ docker build \
 
 Build full image with a pinned Codex CLI version:
 ```sh
-VERSION=0.121.0
+VERSION=0.136.0
 docker build \
   --build-arg CODEX_VERSION=$VERSION \
   --tag codex:$VERSION \
@@ -27,7 +27,7 @@ docker build \
 
 Build base image with a pinned Codex CLI version:
 ```sh
-VERSION=0.121.0
+VERSION=0.136.0
 docker build \
   --target base \
   --build-arg CODEX_VERSION=$VERSION \
@@ -46,11 +46,12 @@ docker run -it --rm \
   --volume ~/.gitconfig:/home/node/.gitconfig:ro \
   --volume ~/.config/gh:/home/node/.config/gh:ro \
   --workdir /workspace \
+  --env GH_TOKEN \
   --env OPENAI_API_KEY \
   --env XDG_CONFIG_HOME=/home/node/.config \
   --env XDG_CACHE_HOME=/home/node/.cache \
   --user node \
-  codex:latest  # or codex:base
+  codex:$VERSION # or codex:latest or codex:base
 ```
 
 ## Leverage Dev Container CLI
@@ -66,6 +67,7 @@ Then the `.devcontainer/devcontainer.json` could be:
   "name": "Codex CLI with Host Tools",
   "image": "codex:latest",
   "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}",
     "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
     "XDG_CONFIG_HOME": "/home/node/.config",
     "XDG_CACHE_HOME": "/home/node/.cache"

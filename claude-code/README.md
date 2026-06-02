@@ -63,6 +63,6 @@ Then the `.devcontainer/devcontainer.json` could be:
   ],
   "remoteUser": "node",
   "postCreateCommand": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash",
-  "postStartCommand": "unset NPM_CONFIG_PREFIX && . ~/.nvm/nvm.sh && nvm install 22 && nvm alias default 22 && echo '. ~/.nvm/nvm.sh' >> ~/.bashrc"
+  "postStartCommand": "unset NPM_CONFIG_PREFIX && . ~/.nvm/nvm.sh && nvm install 24 && nvm alias default 24 && echo '. ~/.nvm/nvm.sh' >> ~/.bashrc"
 }
 ```
