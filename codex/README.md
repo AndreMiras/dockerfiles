@@ -18,7 +18,7 @@ docker build \
 
 Build full image with a pinned Codex CLI version:
 ```sh
-VERSION=0.136.0
+VERSION=0.144.6
 docker build \
   --build-arg CODEX_VERSION=$VERSION \
   --tag codex:$VERSION \
@@ -27,7 +27,7 @@ docker build \
 
 Build base image with a pinned Codex CLI version:
 ```sh
-VERSION=0.136.0
+VERSION=0.144.6
 docker build \
   --target base \
   --build-arg CODEX_VERSION=$VERSION \
@@ -57,7 +57,10 @@ docker run -it --rm \
 ## Leverage Dev Container CLI
 
 ```sh
-npx @devcontainers/cli up --workspace-folder . --remove-existing-container
+npx @devcontainers/cli up \
+  --workspace-folder . \
+  --remove-existing-container \
+  --build-no-cache
 npx @devcontainers/cli exec --workspace-folder . codex
 ```
 
