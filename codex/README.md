@@ -18,7 +18,7 @@ docker build \
 
 Build full image with a pinned Codex CLI version:
 ```sh
-VERSION=0.144.6
+VERSION=0.145.0
 docker build \
   --build-arg CODEX_VERSION=$VERSION \
   --tag codex:$VERSION \
@@ -27,7 +27,7 @@ docker build \
 
 Build base image with a pinned Codex CLI version:
 ```sh
-VERSION=0.144.6
+VERSION=0.145.0
 docker build \
   --target base \
   --build-arg CODEX_VERSION=$VERSION \

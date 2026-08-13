@@ -1,11 +1,11 @@
-FROM node:24-slim AS base
+FROM node:26-slim AS base
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     git \
   && rm -rf /var/lib/apt/lists/*
 
-ARG CODEX_VERSION=0.144.6
+ARG CODEX_VERSION=0.145.0
 RUN npm i -g @openai/codex@${CODEX_VERSION}
 
 WORKDIR /workspace
