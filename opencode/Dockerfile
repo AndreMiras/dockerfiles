@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
   && rm -rf /var/lib/apt/lists/*
 
-ARG OPENCODE_VERSION=1.18.18
+ARG OPENCODE_VERSION=1.19.5
 RUN npm i -g opencode-ai@${OPENCODE_VERSION}
 RUN mkdir -p \
       /home/node/.config/opencode \

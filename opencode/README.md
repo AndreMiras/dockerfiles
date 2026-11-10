@@ -18,7 +18,7 @@ docker build \
 
 Build full image with a pinned OpenCode version:
 ```sh
-VERSION=1.18.18
+VERSION=1.19.5
 docker build \
   --build-arg OPENCODE_VERSION=$VERSION \
   --tag opencode:$VERSION \
@@ -27,7 +27,7 @@ docker build \
 
 Build base image with a pinned OpenCode version:
 ```sh
-VERSION=1.18.18
+VERSION=1.19.5
 docker build \
   --target base \
   --build-arg OPENCODE_VERSION=$VERSION \
@@ -91,6 +91,7 @@ docker run -it --rm \
   --volume ~/.config/opencode:/home/node/.config/opencode \
   --volume ~/.local/share/opencode:/home/node/.local/share/opencode \
   --volume ~/.local/state/opencode:/home/node/.local/state/opencode \
+  --volume "$HOME/.cache/opencode:/home/node/.cache/opencode" \
   --volume ~/.gitconfig:/home/node/.gitconfig:ro \
   --volume ~/.config/gh:/home/node/.config/gh:ro \
   --workdir /workspace \
